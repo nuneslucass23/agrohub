@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastro AgroHub para produtor, ONG e usuário beneficiário.">
+    <title>AgroHub | Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/agrohub.css">
+</head>
+<body class="ah-page">
+    <!-- Menu principal usado em todas as páginas do site. -->
+    <nav class="navbar navbar-expand-lg navbar-dark ah-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" aria-label="AgroHub - Início">
+                <img class="ah-logo" src="img/agrohub_logo.svg" alt="AgroHub">
+            </a>
+            <button class="navbar-toggler ah-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ahNavbar"
+                aria-controls="ahNavbar" aria-expanded="false" aria-label="Abrir menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ahNavbar">
+                <div class="navbar-nav ms-auto gap-lg-3">
+                    <a class="ah-nav-link" href="index.html">Início</a>
+                    <a class="ah-nav-link" href="cadastro.html">Cadastre-se</a>
+                    <a class="ah-nav-link" href="produtor.html">Sou produtor</a>
+                    <a class="ah-nav-link" href="ong.html">Sou ONG</a>
+                    <a class="ah-nav-link" href="contato.html">Fale conosco</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Cabeçalho da página de cadastro. -->
+        <section class="ah-page-hero">
+            <div class="container">
+                <span class="ah-eyebrow">Cadastro</span>
+                <h1 class="ah-title mb-3">Escolha seu perfil na rede AgroHub.</h1>
+                <p class="ah-lead mb-0">Abas separadas reduzem complexidade e deixam o fluxo simples para produtor, ONG e usuário.</p>
+            </div>
+        </section>
+
+        <!-- Abas de cadastro: cada perfil possui os campos realmente necessários. -->
+        <section class="ah-section">
+            <div class="container">
+                <div class="ah-panel">
+                    <div class="d-flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Tipos de cadastro">
+                        <button class="ah-tab active" type="button" data-tab="produtor" aria-selected="true">Produtor</button>
+                        <button class="ah-tab" type="button" data-tab="ong" aria-selected="false">ONG</button>
+                        <button class="ah-tab" type="button" data-tab="usuario" aria-selected="false">Usuário</button>
+                    </div>
+
+                    <!-- Cadastro do produtor: mantido curto para facilitar o uso no campo. -->
+                    <form class="ah-panel-form" data-panel="produtor" data-ah-form novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="produtor-nome">Nome do produtor</label>
+                                <input class="form-control ah-form-control" id="produtor-nome" type="text" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="produtor-alimento">Alimento disponível</label>
+                                <input class="form-control ah-form-control" id="produtor-alimento" type="text" placeholder="Ex.: tomate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="produtor-quantidade">Quantidade</label>
+                                <input class="form-control ah-form-control" id="produtor-quantidade" type="text" placeholder="Ex.: 80 kg" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="produtor-retirada">Local de retirada</label>
+                                <input class="form-control ah-form-control" id="produtor-retirada" type="text" required>
+                            </div>
+                            <div class="col-12">
+                                <p class="ah-success d-none p-3 mb-3" data-form-success>Cadastro de produtor recebido com sucesso.</p>
+                                <button class="ah-btn" type="submit">Cadastrar produtor</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Cadastro da ONG: dados básicos para contato e validação institucional. -->
+                    <form class="ah-panel-form d-none" data-panel="ong" data-ah-form novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="ong-nome">Nome da ONG</label>
+                                <input class="form-control ah-form-control" id="ong-nome" type="text" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="ong-cnpj">CNPJ</label>
+                                <input class="form-control ah-form-control" id="ong-cnpj" type="text" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="ong-email">E-mail</label>
+                                <input class="form-control ah-form-control" id="ong-email" type="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="ong-cidade">Cidade</label>
+                                <input class="form-control ah-form-control" id="ong-cidade" type="text" required>
+                            </div>
+                            <div class="col-12">
+                                <p class="ah-success d-none p-3 mb-3" data-form-success>Cadastro de ONG recebido com sucesso.</p>
+                                <button class="ah-btn" type="submit">Cadastrar ONG</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Cadastro do usuário beneficiário: foco em localização e contato. -->
+                    <form class="ah-panel-form d-none" data-panel="usuario" data-ah-form novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="usuario-nome">Nome completo</label>
+                                <input class="form-control ah-form-control" id="usuario-nome" type="text" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="usuario-email">E-mail</label>
+                                <input class="form-control ah-form-control" id="usuario-email" type="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="usuario-cidade">Cidade</label>
+                                <input class="form-control ah-form-control" id="usuario-cidade" type="text" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold" for="usuario-bairro">Bairro</label>
+                                <input class="form-control ah-form-control" id="usuario-bairro" type="text" required>
+                            </div>
+                            <div class="col-12">
+                                <p class="ah-success d-none p-3 mb-3" data-form-success>Cadastro de usuário recebido com sucesso.</p>
+                                <button class="ah-btn" type="submit">Cadastrar usuário</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé simples, repetido nas demais páginas. -->
+    <footer class="ah-footer py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+            <p>AgroHub - Engenharia de Software FIAP 2026.</p>
+            <p>Grupo 44 - ODS 2.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+</body>
+</html>

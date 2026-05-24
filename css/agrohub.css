@@ -1,0 +1,631 @@
+/* AgroHub - estilos globais
+   Este arquivo concentra a identidade visual, os componentes e os
+   ajustes responsivos usados nas cinco páginas do projeto. */
+
+/* Paleta, medidas e sombras usadas de forma consistente no site. */
+:root {
+    --ah-green-900: #173f2a;
+    --ah-green-700: #2f6b3d;
+    --ah-green-300: #8fbd69;
+    --ah-gold: #c79b43;
+    --ah-cream: #f7f2e8;
+    --ah-sand: #e8dcc8;
+    --ah-white: #ffffff;
+    --ah-text: #20352a;
+    --ah-muted: #68786d;
+    --ah-border: #d8cdbb;
+    --ah-danger: #9a5b16;
+    --ah-radius: 0.5rem;
+    --ah-shadow: 0 1rem 2.5rem rgba(23, 63, 42, 0.12);
+}
+
+/* Base da página e pequenos ajustes de acessibilidade. */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--ah-text);
+    background: var(--ah-cream);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+p,
+h1,
+h2,
+h3 {
+    overflow-wrap: anywhere;
+}
+
+:focus-visible {
+    outline: 0.2rem solid rgba(199, 155, 67, 0.55);
+    outline-offset: 0.2rem;
+}
+
+.ah-page {
+    min-height: 100vh;
+}
+
+/* Menu principal. */
+.ah-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: var(--ah-green-900);
+    border-bottom: 0.25rem solid var(--ah-gold);
+}
+
+.ah-navbar .container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: min(100% - 1.5rem, 1120px);
+    margin-inline: auto;
+}
+
+.ah-logo {
+    width: 10rem;
+    height: auto;
+}
+
+.ah-nav-link {
+    color: var(--ah-sand);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.ah-nav-link:hover,
+.ah-nav-link.active {
+    color: var(--ah-green-300);
+}
+
+.ah-nav-toggle {
+    display: none;
+    color: var(--ah-sand);
+    border-color: rgba(232, 220, 200, 0.45);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.35rem;
+    padding: 0.5rem 0.65rem;
+    background: transparent;
+}
+
+.ah-nav-toggle .navbar-toggler-icon {
+    display: block;
+    width: 1.35rem;
+    height: 1rem;
+    background-image:
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor);
+    background-position: 0 0, 0 50%, 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 0.12rem;
+}
+
+.ah-nav-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(199, 155, 67, 0.35);
+}
+
+/* Fallback visual caso o Bootstrap demore a aplicar o menu mobile. */
+@media (max-width: 991.98px) {
+    .ah-nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+    }
+
+    .ah-navbar .navbar-collapse:not(.show) {
+        display: none;
+    }
+}
+
+/* Áreas de destaque no topo das páginas. */
+.ah-hero,
+.ah-page-hero {
+    color: var(--ah-sand);
+    background:
+        linear-gradient(90deg, rgba(23, 63, 42, 0.96), rgba(47, 107, 61, 0.72)),
+        url("../img/hero_bg.jpg") center / cover;
+}
+
+.ah-hero {
+    min-height: 36rem;
+    display: flex;
+    align-items: center;
+}
+
+.ah-page-hero {
+    padding: 5rem 0 4rem;
+}
+
+/* Titulos, chamadas e textos de apoio. */
+.ah-eyebrow {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--ah-gold);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ah-title {
+    color: var(--ah-white);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    line-height: 1.04;
+    overflow-wrap: anywhere;
+}
+
+.ah-section-title {
+    color: var(--ah-green-900);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 4vw, 3.15rem);
+    line-height: 1.08;
+}
+
+.ah-lead {
+    max-width: 43rem;
+    color: var(--ah-sand);
+    font-size: 1.16rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.ah-text-muted {
+    color: var(--ah-muted);
+}
+
+/* Seções principais. */
+.ah-section {
+    padding: 4.5rem 0;
+}
+
+.ah-section-dark {
+    color: var(--ah-sand);
+    background: var(--ah-green-900);
+}
+
+.ah-section-dark .ah-section-title {
+    color: var(--ah-sand);
+}
+
+/* Cards, paineis e blocos de dados reaproveitados nas telas. */
+.ah-card,
+.ah-stat,
+.ah-panel,
+.ah-list-item {
+    background: var(--ah-white);
+    border: 1px solid var(--ah-border);
+    border-radius: var(--ah-radius);
+    box-shadow: var(--ah-shadow);
+}
+
+.ah-card {
+    height: 100%;
+    padding: 1.5rem;
+}
+
+.ah-card-title {
+    color: var(--ah-green-900);
+    font-weight: 800;
+}
+
+.ah-step {
+    display: inline-grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--ah-green-900);
+    background: var(--ah-green-300);
+    border-radius: 50%;
+    font-weight: 900;
+}
+
+/* Botões principais e secundários. */
+.ah-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    color: var(--ah-green-900);
+    background: var(--ah-gold);
+    border: 1px solid transparent;
+    border-radius: var(--ah-radius);
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.ah-btn:hover {
+    color: var(--ah-green-900);
+    background: #d7ab57;
+    transform: translateY(-1px);
+}
+
+.ah-btn-outline {
+    color: var(--ah-sand);
+    background: transparent;
+    border-color: rgba(232, 220, 200, 0.58);
+}
+
+.ah-btn-outline:hover {
+    color: var(--ah-green-900);
+    background: var(--ah-sand);
+}
+
+.ah-btn-sm {
+    min-height: 2.25rem;
+    padding: 0 0.9rem;
+    font-size: 0.88rem;
+}
+
+.ah-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+}
+
+/* Indicadores numericos. */
+.ah-stat {
+    padding: 1.35rem;
+    border-top: 0.25rem solid var(--ah-gold);
+}
+
+.ah-stat-number {
+    display: block;
+    color: var(--ah-green-900);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2.35rem;
+    line-height: 1;
+}
+
+.ah-stat-label {
+    color: var(--ah-muted);
+    font-weight: 800;
+}
+
+/* Formulários e abas. */
+.ah-panel {
+    padding: 1.5rem;
+}
+
+.ah-tab {
+    min-height: 2.65rem;
+    padding: 0 1.1rem;
+    color: var(--ah-green-900);
+    background: var(--ah-cream);
+    border: 1px solid var(--ah-border);
+    border-radius: var(--ah-radius);
+    font-weight: 800;
+}
+
+.ah-tab.active {
+    color: var(--ah-white);
+    background: var(--ah-green-700);
+    border-color: var(--ah-green-700);
+}
+
+.ah-panel-form {
+    display: none;
+}
+
+.ah-panel-form:not(.d-none) {
+    display: block;
+}
+
+.ah-form-control {
+    min-height: 2.9rem;
+    border-color: var(--ah-border);
+    border-radius: var(--ah-radius);
+}
+
+.ah-form-control:focus {
+    border-color: var(--ah-green-700);
+    box-shadow: 0 0 0 0.2rem rgba(47, 107, 61, 0.14);
+}
+
+.ah-success {
+    color: var(--ah-green-900);
+    background: rgba(143, 189, 105, 0.22);
+    border: 1px solid rgba(47, 107, 61, 0.22);
+    border-radius: var(--ah-radius);
+}
+
+/* Blocos da página Fale Conosco. */
+.ah-contact-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1.25rem;
+    background: var(--ah-white);
+    border: 1px solid var(--ah-border);
+    border-radius: var(--ah-radius);
+    box-shadow: var(--ah-shadow);
+}
+
+.ah-contact-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    color: var(--ah-gold);
+    background: var(--ah-green-900);
+    border-radius: var(--ah-radius);
+    font-weight: 900;
+}
+
+.ah-contact-title {
+    margin-bottom: 0.25rem;
+    color: var(--ah-green-900);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.ah-contact-card p,
+.ah-contact-card a {
+    margin: 0;
+    color: var(--ah-text);
+    text-decoration: none;
+}
+
+.ah-contact-card a:hover {
+    color: var(--ah-green-700);
+    text-decoration: underline;
+}
+
+.ah-contact-note,
+.ah-required-note {
+    color: var(--ah-muted);
+    font-size: 0.85rem;
+}
+
+.ah-char-counter {
+    margin-top: 0.35rem;
+    color: var(--ah-muted);
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+.ah-char-counter.warning {
+    color: var(--ah-danger);
+    font-weight: 800;
+}
+
+.ah-check {
+    padding: 1rem 1rem 1rem 2.75rem;
+    background: var(--ah-cream);
+    border: 1px solid var(--ah-border);
+    border-radius: var(--ah-radius);
+}
+
+.ah-section-soft {
+    background: var(--ah-sand);
+}
+
+.ah-faq .accordion-item {
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    background: var(--ah-white);
+    border: 1px solid var(--ah-border);
+    border-radius: var(--ah-radius);
+}
+
+.ah-faq .accordion-button {
+    color: var(--ah-green-900);
+    background: var(--ah-white);
+    font-weight: 800;
+}
+
+.ah-faq .accordion-button:not(.collapsed) {
+    color: var(--ah-white);
+    background: var(--ah-green-900);
+    box-shadow: none;
+}
+
+.ah-faq .accordion-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(47, 107, 61, 0.16);
+}
+
+.ah-faq .accordion-body {
+    color: var(--ah-muted);
+    line-height: 1.7;
+}
+
+.ah-contact-cta {
+    padding: 3.5rem 0;
+    color: var(--ah-sand);
+    background: var(--ah-green-900);
+    border-top: 0.2rem solid var(--ah-gold);
+}
+
+.ah-contact-cta .ah-section-title {
+    color: var(--ah-sand);
+}
+
+.ah-contact-cta p {
+    color: rgba(232, 220, 200, 0.82);
+}
+
+/* Listas usadas no painel da ONG. */
+.ah-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.ah-list-item {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.ah-list-item.d-none {
+    display: none;
+}
+
+.ah-list-item.is-scheduled {
+    border-color: rgba(47, 107, 61, 0.35);
+    background: rgba(143, 189, 105, 0.14);
+}
+
+.ah-item-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: var(--ah-green-900);
+    background: var(--ah-cream);
+    border-radius: var(--ah-radius);
+    font-weight: 900;
+}
+
+.ah-item-title {
+    margin-bottom: 0.2rem;
+    color: var(--ah-green-900);
+    font-weight: 900;
+}
+
+.ah-item-meta {
+    margin: 0;
+    color: var(--ah-muted);
+    font-size: 0.92rem;
+}
+
+.ah-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.75rem;
+    padding: 0 0.65rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.ah-badge-success {
+    color: var(--ah-green-700);
+    background: rgba(143, 189, 105, 0.2);
+}
+
+.ah-badge-warning {
+    color: var(--ah-danger);
+    background: rgba(199, 155, 67, 0.22);
+}
+
+.ah-badge-muted {
+    color: var(--ah-muted);
+    background: var(--ah-cream);
+}
+
+/* Estado vazio exibido quando os filtros não encontram resultados. */
+.ah-empty {
+    display: none;
+    padding: 1rem;
+    color: var(--ah-muted);
+    background: var(--ah-white);
+    border: 1px dashed var(--ah-border);
+    border-radius: var(--ah-radius);
+    text-align: center;
+}
+
+.ah-empty.show {
+    display: block;
+}
+
+/* Barras de progresso dos indicadores de impacto. */
+.ah-progress {
+    height: 0.55rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+}
+
+.ah-progress-bar {
+    display: block;
+    height: 100%;
+    background: var(--ah-gold);
+}
+
+.ah-w-72 {
+    width: 72%;
+}
+
+.ah-w-85 {
+    width: 85%;
+}
+
+/* Rodapé padrão. */
+.ah-footer {
+    color: var(--ah-sand);
+    background: var(--ah-green-900);
+}
+
+.ah-footer p {
+    margin: 0;
+}
+
+/* Ajustes para telas pequenas. */
+@media (max-width: 767.98px) {
+    .ah-logo {
+        width: 8.4rem;
+    }
+
+    .ah-hero {
+        min-height: auto;
+        padding: 5rem 0;
+    }
+
+    .ah-title {
+        width: 100%;
+        max-width: 21rem;
+        font-size: 1.75rem;
+        line-height: 1.12;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .ah-lead {
+        width: 100%;
+        max-width: 21rem;
+        font-size: 0.95rem;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .fs-5 {
+        font-size: 1rem !important;
+    }
+
+    .ah-btn {
+        width: min(100%, 21rem);
+    }
+
+    .ah-section {
+        padding: 3.25rem 0;
+    }
+
+    .ah-list-item {
+        grid-template-columns: 3rem minmax(0, 1fr);
+    }
+
+    .ah-list-item .ah-badge,
+    .ah-list-item .ah-btn {
+        grid-column: 2;
+        width: fit-content;
+    }
+}

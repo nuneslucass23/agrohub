@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fale conosco da AgroHub com formulário HTML5 válido.">
+    <title>AgroHub | Fale conosco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/agrohub.css">
+</head>
+<body class="ah-page">
+    <!-- Menu principal usado em todas as páginas do site. -->
+    <nav class="navbar navbar-expand-lg navbar-dark ah-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" aria-label="AgroHub - Início">
+                <img class="ah-logo" src="img/agrohub_logo.svg" alt="AgroHub">
+            </a>
+            <button class="navbar-toggler ah-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ahNavbar"
+                aria-controls="ahNavbar" aria-expanded="false" aria-label="Abrir menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ahNavbar">
+                <div class="navbar-nav ms-auto gap-lg-3">
+                    <a class="ah-nav-link" href="index.html">Início</a>
+                    <a class="ah-nav-link" href="cadastro.html">Cadastre-se</a>
+                    <a class="ah-nav-link" href="produtor.html">Sou produtor</a>
+                    <a class="ah-nav-link" href="ong.html">Sou ONG</a>
+                    <a class="ah-nav-link" href="contato.html">Fale conosco</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Apresentação da página de contato. -->
+        <section class="ah-page-hero">
+            <div class="container">
+                <span class="ah-eyebrow">Suporte e contato</span>
+                <h1 class="ah-title mb-3">Fale com a equipe AgroHub.</h1>
+                <p class="ah-lead mb-0">
+                    Tire dúvidas, reporte problemas, proponha parcerias ou envie sugestões para melhorar a plataforma.
+                    Respondemos em até 24 horas úteis.
+                </p>
+            </div>
+        </section>
+
+        <!-- Canais de atendimento e formulário principal. -->
+        <section class="ah-section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <aside class="ah-contact-card">
+                            <div class="ah-contact-icon">E</div>
+                            <div>
+                                <h2 class="ah-contact-title">E-mail</h2>
+                                <a href="mailto:contato@agrohub.com.br">contato@agrohub.com.br</a>
+                            </div>
+                        </aside>
+
+                        <aside class="ah-contact-card">
+                            <div class="ah-contact-icon">W</div>
+                            <div>
+                                <h2 class="ah-contact-title">Telefone / WhatsApp</h2>
+                                <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">(11) 99999-9999</a>
+                                <p class="ah-contact-note">Segunda a sexta, das 8h às 18h.</p>
+                            </div>
+                        </aside>
+
+                        <aside class="ah-contact-card">
+                            <div class="ah-contact-icon">L</div>
+                            <div>
+                                <h2 class="ah-contact-title">Localização</h2>
+                                <p>FIAP - São Paulo, SP<br>Brasil</p>
+                            </div>
+                        </aside>
+
+                        <aside class="ah-contact-card">
+                            <div class="ah-contact-icon">24</div>
+                            <div>
+                                <h2 class="ah-contact-title">Tempo de resposta</h2>
+                                <p>Até <strong>24 horas úteis</strong>.</p>
+                                <p class="ah-contact-note">Atendimento prioritário para ONGs parceiras.</p>
+                            </div>
+                        </aside>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form class="ah-panel" id="form-contato" data-ah-form novalidate>
+                            <span class="ah-eyebrow">Formulário de contato</span>
+                            <h2 class="ah-section-title mb-2">Envie sua mensagem</h2>
+                            <p class="ah-text-muted mb-4">
+                                Preencha os campos abaixo para que a equipe consiga responder com mais agilidade.
+                            </p>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="nome">Nome completo</label>
+                                    <input class="form-control ah-form-control" id="nome" name="nome" type="text"
+                                        minlength="3" autocomplete="name" required>
+                                    <div class="invalid-feedback">Informe seu nome completo.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="email">E-mail</label>
+                                    <input class="form-control ah-form-control" id="email" name="email" type="email"
+                                        autocomplete="email" required>
+                                    <div class="invalid-feedback">Informe um e-mail válido.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="perfil">Você é</label>
+                                    <select class="form-select ah-form-control" id="perfil" name="perfil" required>
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="produtor">Produtor rural</option>
+                                        <option value="ong">ONG ou organização social</option>
+                                        <option value="usuario">Usuário beneficiário</option>
+                                        <option value="parceiro">Parceiro ou empresa</option>
+                                        <option value="imprensa">Imprensa</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                    <div class="invalid-feedback">Selecione seu perfil.</div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold" for="assunto">Assunto</label>
+                                    <select class="form-select ah-form-control" id="assunto" name="assunto" required>
+                                        <option value="">Selecione o assunto</option>
+                                        <option value="duvida">Dúvida sobre a plataforma</option>
+                                        <option value="cadastro">Problema no cadastro</option>
+                                        <option value="coleta">Agendamento de coleta</option>
+                                        <option value="parceria">Proposta de parceria</option>
+                                        <option value="imprensa">Solicitação de imprensa</option>
+                                        <option value="feedback">Feedback ou sugestão</option>
+                                        <option value="bug">Reportar um problema</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                    <div class="invalid-feedback">Selecione o assunto.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label fw-bold" for="mensagem">Mensagem</label>
+                                    <textarea class="form-control ah-form-control" id="mensagem" name="mensagem"
+                                        rows="6" minlength="20" maxlength="1000" data-char-source required></textarea>
+                                    <div class="ah-char-counter" data-char-counter>0 / 1000</div>
+                                    <div class="invalid-feedback">A mensagem deve ter pelo menos 20 caracteres.</div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check ah-check">
+                                        <input class="form-check-input" type="checkbox" id="lgpd" name="lgpd" required>
+                                        <label class="form-check-label" for="lgpd">
+                                            Concordo com o uso dos meus dados para resposta a esta solicitação.
+                                        </label>
+                                        <div class="invalid-feedback">Aceite o uso dos dados para continuar.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <p class="ah-success d-none p-3 mb-3" id="form-success" data-form-success>
+                                        Mensagem enviada com sucesso. Em breve nossa equipe entrará em contato.
+                                    </p>
+                                    <div class="d-flex flex-wrap align-items-center gap-3">
+                                        <button class="ah-btn" type="submit">Enviar mensagem</button>
+                                        <span class="ah-required-note">Todos os campos são obrigatórios.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Perguntas frequentes para resolver dúvidas sem depender de atendimento. -->
+        <section class="ah-section ah-section-soft">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <span class="ah-eyebrow">Dúvidas frequentes</span>
+                        <h2 class="ah-section-title">Perguntas e respostas</h2>
+                        <p class="ah-text-muted">
+                            Respostas rápidas para os pontos mais comuns sobre cadastro, coletas e segurança de dados.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="accordion ah-faq" id="faqContato">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                        O AgroHub é gratuito para produtores e ONGs?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqContato">
+                                    <div class="accordion-body">
+                                        Sim. O objetivo do projeto é reduzir barreiras de acesso e facilitar a conexão
+                                        entre quem tem excedentes e quem distribui alimentos.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                        Quanto tempo leva para receber uma resposta?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqContato">
+                                    <div class="accordion-body">
+                                        A previsão de retorno é de até 24 horas úteis. Demandas de coleta de ONGs
+                                        parceiras recebem prioridade.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                        Como reportar um produto cadastrado incorretamente?
+                                    </button>
+                                </h3>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqContato">
+                                    <div class="accordion-body">
+                                        Use o assunto "Reportar um problema" e descreva o alimento, o produtor e o erro
+                                        encontrado. Assim a equipe consegue avaliar o caso.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                        Posso propor uma parceria institucional?
+                                    </button>
+                                </h3>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqContato">
+                                    <div class="accordion-body">
+                                        Sim. Selecione "Proposta de parceria" no formulário e envie um resumo da ideia,
+                                        da instituição e da região de atuação.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                        Meus dados pessoais ficam protegidos?
+                                    </button>
+                                </h3>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqContato">
+                                    <div class="accordion-body">
+                                        Os dados informados são usados apenas para responder a solicitação enviada pelo
+                                        formulário de contato.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chamada final para levar o visitante ao fluxo de cadastro. -->
+        <section class="ah-contact-cta">
+            <div class="container text-center">
+                <h2 class="ah-section-title">Pronto para fazer parte da solução?</h2>
+                <p>Cadastre-se gratuitamente e ajude a transformar excedente em impacto real.</p>
+                <a class="ah-btn" href="cadastro.html">Quero participar</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé simples, repetido nas demais páginas. -->
+    <footer class="ah-footer py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+            <p>AgroHub - Engenharia de Software FIAP 2026.</p>
+            <p>Grupo 44 - ODS 2.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+</body>
+</html>

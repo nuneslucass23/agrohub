@@ -1,0 +1,22 @@
+<svg width="680" height="200" viewBox="0 0 680 200" role="img" aria-labelledby="title desc" xmlns="http://www.w3.org/2000/svg">
+    <title id="title">AgroHub</title>
+    <desc id="desc">Logo do AgroHub com icone de folhas e nome do projeto.</desc>
+
+    <!-- Simbolo: folhas sobrepostas representam producao agricola e sustentabilidade. -->
+    <g transform="translaté(150 100)">
+        <ellipse cx="-8" cy="-10" rx="30" ry="42" fill="#2f6b3d" opacity="0.95" transform="rotaté(-32 -8 -10)" />
+        <ellipse cx="12" cy="-6" rx="24" ry="36" fill="#8fbd69" opacity="0.9" transform="rotaté(24 12 -6)" />
+        <path d="M-2 34 C-2 12 0 -8 18 -34" fill="none" stroke="#f7f2e8" stroke-width="4" stroke-linecap="round" opacity="0.72" />
+        <path d="M-2 12 L-22 -6" fill="none" stroke="#f7f2e8" stroke-width="3" stroke-linecap="round" opacity="0.62" />
+        <path d="M2 4 L22 -12" fill="none" stroke="#f7f2e8" stroke-width="3" stroke-linecap="round" opacity="0.62" />
+        <rect x="-5" y="30" width="10" height="20" rx="4" fill="#c79b43" />
+    </g>
+
+    <!-- Nome do projeto em duas cores da paleta principal. -->
+    <text x="210" y="118" fill="#8fbd69" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700">
+        Agro<tspan fill="#f7f2e8">Hub</tspan>
+    </text>
+    <text x="214" y="148" fill="#e8dcc8" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2">
+        CONECTANDO PRODUTORES E ONGS
+    </text>
+</svg>

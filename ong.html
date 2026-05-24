@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel da ONG parceira para ver excedentes, agendar coletas e acompanhar histórico.">
+    <title>AgroHub | Sou ONG</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/agrohub.css">
+</head>
+<body class="ah-page">
+    <!-- Menu principal usado em todas as páginas do site. -->
+    <nav class="navbar navbar-expand-lg navbar-dark ah-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" aria-label="AgroHub - Início">
+                <img class="ah-logo" src="img/agrohub_logo.svg" alt="AgroHub">
+            </a>
+            <button class="navbar-toggler ah-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#ahNavbar"
+                aria-controls="ahNavbar" aria-expanded="false" aria-label="Abrir menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ahNavbar">
+                <div class="navbar-nav ms-auto gap-lg-3">
+                    <a class="ah-nav-link" href="index.html">Início</a>
+                    <a class="ah-nav-link" href="cadastro.html">Cadastre-se</a>
+                    <a class="ah-nav-link" href="produtor.html">Sou produtor</a>
+                    <a class="ah-nav-link" href="ong.html">Sou ONG</a>
+                    <a class="ah-nav-link" href="contato.html">Fale conosco</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Contexto da ONG e objetivo do painel. -->
+        <section class="ah-page-hero">
+            <div class="container">
+                <span class="ah-eyebrow">ONG parceira</span>
+                <h1 class="ah-title mb-3">Previsibilidade para planejar coletas.</h1>
+                <p class="ah-lead mb-0">O painel mostra o que está disponível, onde está e quando pode ser retirado.</p>
+            </div>
+        </section>
+
+        <!-- Indicadores, filtros e lista de excedentes disponíveis. -->
+        <section class="ah-section">
+            <div class="container">
+                <div class="row g-3 mb-4">
+                    <div class="col-md-3 col-6">
+                        <div class="ah-stat">
+                            <strong class="ah-stat-number">12</strong>
+                            <span class="ah-stat-label">excedentes</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="ah-stat">
+                            <strong class="ah-stat-number">4</strong>
+                            <span class="ah-stat-label">coletas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="ah-stat">
+                            <strong class="ah-stat-number">238</strong>
+                            <span class="ah-stat-label">famílias</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="ah-stat">
+                            <strong class="ah-stat-number">1.4t</strong>
+                            <span class="ah-stat-label">redistribuídas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-3">
+                            <div>
+                                <span class="ah-eyebrow">Excedentes</span>
+                                <h2 class="ah-section-title mb-0">Disponíveis na região</h2>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 align-self-md-end" data-filter-group aria-label="Filtrar excedentes">
+                                <button class="ah-tab active" type="button" data-filter="todos">Todos</button>
+                                <button class="ah-tab" type="button" data-filter="graos">Grãos</button>
+                                <button class="ah-tab" type="button" data-filter="hortifruti">Hortifruti</button>
+                                <button class="ah-tab" type="button" data-filter="laticinios">Laticínios</button>
+                            </div>
+                        </div>
+
+                        <!-- Lista filtrável: o JavaScript usa categoria e distância de cada item. -->
+                        <div class="ah-list" data-donation-list>
+                            <article class="ah-list-item" data-category="graos" data-distance="32">
+                                <div class="ah-item-icon">M</div>
+                                <div><p class="ah-item-title">Milho verde - 200 kg</p><p class="ah-item-meta">Fazenda São João - Sorocaba, SP - até 25/05</p></div>
+                                <span class="ah-badge ah-badge-success">Disponível</span>
+                                <button class="ah-btn ah-btn-sm" type="button" data-schedule>Agendar</button>
+                            </article>
+                            <article class="ah-list-item" data-category="hortifruti" data-distance="47">
+                                <div class="ah-item-icon">T</div>
+                                <div><p class="ah-item-title">Tomate - 80 kg</p><p class="ah-item-meta">Sítio Boa Vista - Itu, SP - até 22/05</p></div>
+                                <span class="ah-badge ah-badge-warning">Urgente</span>
+                                <button class="ah-btn ah-btn-sm" type="button" data-schedule>Agendar</button>
+                            </article>
+                            <article class="ah-list-item" data-category="hortifruti" data-distance="51">
+                                <div class="ah-item-icon">C</div>
+                                <div><p class="ah-item-title">Cenoura - 150 kg</p><p class="ah-item-meta">Chácara Esperança - Votorantim, SP - até 28/05</p></div>
+                                <span class="ah-badge ah-badge-success">Disponível</span>
+                                <button class="ah-btn ah-btn-sm" type="button" data-schedule>Agendar</button>
+                            </article>
+                            <article class="ah-list-item" data-category="laticinios" data-distance="92">
+                                <div class="ah-item-icon">L</div>
+                                <div><p class="ah-item-title">Leite UHT - 50 caixas</p><p class="ah-item-meta">Cooperativa Laticínio SP - Araçariguama, SP - até 27/05</p></div>
+                                <span class="ah-badge ah-badge-success">Disponível</span>
+                                <button class="ah-btn ah-btn-sm" type="button" data-schedule>Agendar</button>
+                            </article>
+                        </div>
+                        <p class="ah-empty mt-3" data-empty-state>Nenhum excedente encontrado para esse filtro.</p>
+                    </div>
+
+                    <!-- Controles auxiliares do painel da ONG. -->
+                    <div class="col-lg-4">
+                        <aside class="ah-panel mb-3">
+                            <h2 class="ah-card-title h5">Filtrar por distância</h2>
+                            <label class="form-label fw-bold" for="distancia">Raio: <span data-range-label>80</span> km</label>
+                            <input class="form-range" id="distancia" type="range" min="10" max="200" value="80" data-range>
+                        </aside>
+                        <aside class="ah-panel">
+                            <h2 class="ah-card-title h5">Impacto gerado</h2>
+                            <p class="ah-text-muted mb-1">Famílias atendidas</p>
+                            <div class="ah-progress mb-3"><span class="ah-progress-bar ah-w-72"></span></div>
+                            <p class="ah-text-muted mb-1">Refeições estimadas</p>
+                            <div class="ah-progress"><span class="ah-progress-bar ah-w-85"></span></div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé simples, repetido nas demais páginas. -->
+    <footer class="ah-footer py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+            <p>AgroHub - Engenharia de Software FIAP 2026.</p>
+            <p>Grupo 44 - ODS 2.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+</body>
+</html>
