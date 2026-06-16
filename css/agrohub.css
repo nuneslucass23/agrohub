@@ -32,6 +32,7 @@ body {
     color: var(--ah-text);
     background: var(--ah-cream);
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
@@ -39,7 +40,7 @@ p,
 h1,
 h2,
 h3 {
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
 }
 
 :focus-visible {
@@ -58,6 +59,7 @@ h3 {
     z-index: 1030;
     background: var(--ah-green-900);
     border-bottom: 0.25rem solid var(--ah-gold);
+    box-shadow: 0 0.35rem 1rem rgba(23, 63, 42, 0.16);
 }
 
 .ah-navbar .container {
@@ -74,14 +76,21 @@ h3 {
 }
 
 .ah-nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.4rem;
+    padding: 0 0.55rem;
     color: var(--ah-sand);
+    border-radius: var(--ah-radius);
     font-weight: 700;
     text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
 }
 
 .ah-nav-link:hover,
 .ah-nav-link.active {
     color: var(--ah-green-300);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .ah-nav-toggle {
@@ -152,22 +161,22 @@ h3 {
     color: var(--ah-gold);
     font-size: 0.78rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
     text-transform: uppercase;
 }
 
 .ah-title {
     color: var(--ah-white);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    font-size: 4.4rem;
     line-height: 1.04;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
 }
 
 .ah-section-title {
     color: var(--ah-green-900);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(2rem, 4vw, 3.15rem);
+    font-size: 3rem;
     line-height: 1.08;
 }
 
@@ -211,6 +220,12 @@ h3 {
 .ah-card {
     height: 100%;
     padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ah-card:hover {
+    box-shadow: 0 1.1rem 2.7rem rgba(23, 63, 42, 0.16);
+    transform: translateY(-2px);
 }
 
 .ah-card-title {
@@ -307,6 +322,11 @@ h3 {
     border: 1px solid var(--ah-border);
     border-radius: var(--ah-radius);
     font-weight: 800;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.ah-tab:hover {
+    border-color: var(--ah-green-700);
 }
 
 .ah-tab.active {
@@ -339,6 +359,7 @@ h3 {
     background: rgba(143, 189, 105, 0.22);
     border: 1px solid rgba(47, 107, 61, 0.22);
     border-radius: var(--ah-radius);
+    line-height: 1.5;
 }
 
 /* Blocos da página Fale Conosco. */
@@ -372,7 +393,7 @@ h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.85rem;
     font-weight: 900;
-    letter-spacing: 0.06em;
+    letter-spacing: 0;
     text-transform: uppercase;
 }
 
@@ -473,6 +494,7 @@ h3 {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .ah-list-item.d-none {
@@ -510,11 +532,13 @@ h3 {
 .ah-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     min-height: 1.75rem;
     padding: 0 0.65rem;
     border-radius: 999px;
     font-size: 0.78rem;
     font-weight: 900;
+    white-space: nowrap;
 }
 
 .ah-badge-success {
@@ -580,6 +604,40 @@ h3 {
 }
 
 /* Ajustes para telas pequenas. */
+@media (max-width: 991.98px) {
+    .ah-navbar .container {
+        padding-block: 0.35rem;
+    }
+
+    .ah-navbar .navbar-collapse.show {
+        padding: 0.75rem 0 0.35rem;
+    }
+
+    .ah-nav-link {
+        width: 100%;
+        min-height: 2.75rem;
+        padding: 0 0.75rem;
+    }
+
+    .ah-title {
+        font-size: 3.25rem;
+    }
+
+    .ah-section-title {
+        font-size: 2.45rem;
+    }
+
+    .ah-list-item {
+        grid-template-columns: 3rem minmax(0, 1fr);
+    }
+
+    .ah-list-item .ah-badge,
+    .ah-list-item .ah-btn {
+        grid-column: 2;
+        width: fit-content;
+    }
+}
+
 @media (max-width: 767.98px) {
     .ah-logo {
         width: 8.4rem;
@@ -592,16 +650,20 @@ h3 {
 
     .ah-title {
         width: 100%;
-        max-width: 21rem;
-        font-size: 1.75rem;
+        max-width: 23rem;
+        font-size: 2.25rem;
         line-height: 1.12;
         white-space: normal;
         word-break: break-word;
     }
 
+    .ah-section-title {
+        font-size: 2rem;
+    }
+
     .ah-lead {
         width: 100%;
-        max-width: 21rem;
+        max-width: 23rem;
         font-size: 0.95rem;
         white-space: normal;
         word-break: break-word;
@@ -611,21 +673,33 @@ h3 {
         font-size: 1rem !important;
     }
 
-    .ah-btn {
-        width: min(100%, 21rem);
-    }
-
     .ah-section {
         padding: 3.25rem 0;
     }
 
-    .ah-list-item {
-        grid-template-columns: 3rem minmax(0, 1fr);
+    .ah-btn {
+        width: min(100%, 23rem);
     }
 
-    .ah-list-item .ah-badge,
-    .ah-list-item .ah-btn {
-        grid-column: 2;
-        width: fit-content;
+    .ah-stat-number {
+        font-size: 1.9rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .ah-btn,
+    .ah-card,
+    .ah-nav-link,
+    .ah-tab {
+        transition: none;
+    }
+
+    .ah-btn:hover,
+    .ah-card:hover {
+        transform: none;
     }
 }

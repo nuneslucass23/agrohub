@@ -46,29 +46,33 @@
             <div class="container">
                 <div class="ah-panel">
                     <div class="d-flex flex-wrap gap-2 mb-4" role="tablist" aria-label="Tipos de cadastro">
-                        <button class="ah-tab active" type="button" data-tab="produtor" aria-selected="true">Produtor</button>
-                        <button class="ah-tab" type="button" data-tab="ong" aria-selected="false">ONG</button>
-                        <button class="ah-tab" type="button" data-tab="usuario" aria-selected="false">Usuário</button>
+                        <button class="ah-tab active" type="button" role="tab" data-tab="produtor" aria-controls="painel-produtor" aria-selected="true">Produtor</button>
+                        <button class="ah-tab" type="button" role="tab" data-tab="ong" aria-controls="painel-ong" aria-selected="false">ONG</button>
+                        <button class="ah-tab" type="button" role="tab" data-tab="usuario" aria-controls="painel-usuario" aria-selected="false">Usuário</button>
                     </div>
 
                     <!-- Cadastro do produtor: mantido curto para facilitar o uso no campo. -->
-                    <form class="ah-panel-form" data-panel="produtor" data-ah-form novalidate>
+                    <form class="ah-panel-form" id="painel-produtor" role="tabpanel" data-panel="produtor" data-ah-form novalidate>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="produtor-nome">Nome do produtor</label>
-                                <input class="form-control ah-form-control" id="produtor-nome" type="text" required>
+                                <input class="form-control ah-form-control" id="produtor-nome" name="produtor-nome" type="text" autocomplete="name" required>
+                                <div class="invalid-feedback">Informe o nome do produtor.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="produtor-alimento">Alimento disponível</label>
-                                <input class="form-control ah-form-control" id="produtor-alimento" type="text" placeholder="Ex.: tomate" required>
+                                <input class="form-control ah-form-control" id="produtor-alimento" name="produtor-alimento" type="text" placeholder="Ex.: tomate" required>
+                                <div class="invalid-feedback">Informe o alimento disponível.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="produtor-quantidade">Quantidade</label>
-                                <input class="form-control ah-form-control" id="produtor-quantidade" type="text" placeholder="Ex.: 80 kg" required>
+                                <input class="form-control ah-form-control" id="produtor-quantidade" name="produtor-quantidade" type="text" placeholder="Ex.: 80 kg" required>
+                                <div class="invalid-feedback">Informe a quantidade aproximada.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="produtor-retirada">Local de retirada</label>
-                                <input class="form-control ah-form-control" id="produtor-retirada" type="text" required>
+                                <input class="form-control ah-form-control" id="produtor-retirada" name="produtor-retirada" type="text" autocomplete="street-address" required>
+                                <div class="invalid-feedback">Informe o local de retirada.</div>
                             </div>
                             <div class="col-12">
                                 <p class="ah-success d-none p-3 mb-3" data-form-success>Cadastro de produtor recebido com sucesso.</p>
@@ -78,23 +82,27 @@
                     </form>
 
                     <!-- Cadastro da ONG: dados básicos para contato e validação institucional. -->
-                    <form class="ah-panel-form d-none" data-panel="ong" data-ah-form novalidate>
+                    <form class="ah-panel-form d-none" id="painel-ong" role="tabpanel" data-panel="ong" data-ah-form novalidate>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="ong-nome">Nome da ONG</label>
-                                <input class="form-control ah-form-control" id="ong-nome" type="text" required>
+                                <input class="form-control ah-form-control" id="ong-nome" name="ong-nome" type="text" autocomplete="organization" required>
+                                <div class="invalid-feedback">Informe o nome da ONG.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="ong-cnpj">CNPJ</label>
-                                <input class="form-control ah-form-control" id="ong-cnpj" type="text" required>
+                                <input class="form-control ah-form-control" id="ong-cnpj" name="ong-cnpj" type="text" required>
+                                <div class="invalid-feedback">Informe o CNPJ.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="ong-email">E-mail</label>
-                                <input class="form-control ah-form-control" id="ong-email" type="email" required>
+                                <input class="form-control ah-form-control" id="ong-email" name="ong-email" type="email" autocomplete="email" required>
+                                <div class="invalid-feedback">Informe um e-mail válido.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="ong-cidade">Cidade</label>
-                                <input class="form-control ah-form-control" id="ong-cidade" type="text" required>
+                                <input class="form-control ah-form-control" id="ong-cidade" name="ong-cidade" type="text" autocomplete="address-level2" required>
+                                <div class="invalid-feedback">Informe a cidade da ONG.</div>
                             </div>
                             <div class="col-12">
                                 <p class="ah-success d-none p-3 mb-3" data-form-success>Cadastro de ONG recebido com sucesso.</p>
@@ -104,23 +112,27 @@
                     </form>
 
                     <!-- Cadastro do usuário beneficiário: foco em localização e contato. -->
-                    <form class="ah-panel-form d-none" data-panel="usuario" data-ah-form novalidate>
+                    <form class="ah-panel-form d-none" id="painel-usuario" role="tabpanel" data-panel="usuario" data-ah-form novalidate>
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="usuario-nome">Nome completo</label>
-                                <input class="form-control ah-form-control" id="usuario-nome" type="text" required>
+                                <input class="form-control ah-form-control" id="usuario-nome" name="usuario-nome" type="text" autocomplete="name" required>
+                                <div class="invalid-feedback">Informe o nome completo.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="usuario-email">E-mail</label>
-                                <input class="form-control ah-form-control" id="usuario-email" type="email" required>
+                                <input class="form-control ah-form-control" id="usuario-email" name="usuario-email" type="email" autocomplete="email" required>
+                                <div class="invalid-feedback">Informe um e-mail válido.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="usuario-cidade">Cidade</label>
-                                <input class="form-control ah-form-control" id="usuario-cidade" type="text" required>
+                                <input class="form-control ah-form-control" id="usuario-cidade" name="usuario-cidade" type="text" autocomplete="address-level2" required>
+                                <div class="invalid-feedback">Informe sua cidade.</div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold" for="usuario-bairro">Bairro</label>
-                                <input class="form-control ah-form-control" id="usuario-bairro" type="text" required>
+                                <input class="form-control ah-form-control" id="usuario-bairro" name="usuario-bairro" type="text" autocomplete="address-level3" required>
+                                <div class="invalid-feedback">Informe seu bairro.</div>
                             </div>
                             <div class="col-12">
                                 <p class="ah-success d-none p-3 mb-3" data-form-success>Cadastro de usuário recebido com sucesso.</p>

@@ -9,8 +9,14 @@ function setActiveNav() {
         const href = link.getAttribute("href");
         const targetPage = href?.split("#")[0] || "index.html";
         const hasHash = href?.includes("#");
+        const isActive = targetPage === current && !hasHash;
 
-        link.classList.toggle("active", targetPage === current && !hasHash);
+        link.classList.toggle("active", isActive);
+        if (isActive) {
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.removeAttribute("aria-current");
+        }
     });
 }
 
@@ -57,26 +63,50 @@ function initCadastroTabs() {
                 item.setAttribute("aria-selected", "false");
             });
 
-            panels.forEach((panel) => panel.classList.add("d-none"));
+            panels.forEach((panel) => {
+                panel.classList.add("d-none");
+                panel.classList.remove("was-validated");
+                hideFormSuccess(panel);
+            });
             tab.classList.add("active");
             tab.setAttribute("aria-selected", "true");
-            document.querySelector(`[data-panel="${target}"]`)?.classList.remove("d-none");
+
+            const targetPanel = document.querySelector(`[data-panel="${target}"]`);
+            targetPanel?.classList.remove("d-none");
         });
     });
+}
+
+// Localiza a mensagem de sucesso dentro do formulário atual.
+function getFormSuccess(form) {
+    return form?.querySelector("[data-form-success]") || document.getElementById("form-success");
+}
+
+// Esconde mensagens antigas quando o usuário volta a preencher o formulário.
+function hideFormSuccess(form) {
+    const success = getFormSuccess(form);
+    success?.classList.add("d-none");
+    success?.removeAttribute("role");
 }
 
 // Valida formulários com HTML5 e mostra uma mensagem de confirmação.
 function initForms() {
     document.querySelectorAll("form[data-ah-form]").forEach((form) => {
+        form.querySelectorAll("input, select, textarea").forEach((field) => {
+            field.addEventListener("input", () => hideFormSuccess(form));
+            field.addEventListener("change", () => hideFormSuccess(form));
+        });
+
         form.addEventListener("submit", (event) => {
             event.preventDefault();
+            hideFormSuccess(form);
 
             if (!form.checkValidity()) {
                 form.classList.add("was-validated");
                 return;
             }
 
-            const success = form.querySelector("[data-form-success]") || document.getElementById("form-success");
+            const success = getFormSuccess(form);
             success?.classList.remove("d-none");
             success?.setAttribute("role", "status");
 
@@ -148,13 +178,17 @@ function initOngFilters() {
         const button = event.target.closest("[data-filter]");
         if (!button) return;
 
-        filterGroup.querySelectorAll("[data-filter]").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
+        filterGroup.querySelectorAll("[data-filter]").forEach((item) => {
+            const isSelected = item === button;
+            item.classList.toggle("active", isSelected);
+            item.setAttribute("aria-pressed", String(isSelected));
+        });
         applyOngFilters();
     });
 
     range?.addEventListener("input", () => {
-        document.querySelector("[data-range-label]").textContent = range.value;
+        const label = document.querySelector("[data-range-label]");
+        if (label) label.textContent = range.value;
         applyOngFilters();
     });
 
@@ -185,6 +219,8 @@ function applyOngFilters() {
 function initScheduleButtons() {
     document.querySelectorAll("[data-schedule]").forEach((button) => {
         button.addEventListener("click", () => {
+            if (button.disabled) return;
+
             const card = button.closest(".ah-list-item");
             const badge = card?.querySelector(".ah-badge");
 

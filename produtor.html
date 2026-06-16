@@ -97,10 +97,14 @@
                   <input
                     class="form-control ah-form-control"
                     id="produto"
+                    name="produto"
                     type="text"
                     placeholder="Ex.: cenoura"
                     required
                   />
+                  <div class="invalid-feedback">
+                    Informe o produto disponível.
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label fw-bold" for="quantidade"
@@ -109,10 +113,14 @@
                   <input
                     class="form-control ah-form-control"
                     id="quantidade"
+                    name="quantidade"
                     type="text"
                     placeholder="Ex.: 150 kg"
                     required
                   />
+                  <div class="invalid-feedback">
+                    Informe a quantidade aproximada.
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label fw-bold" for="validade"
@@ -121,9 +129,13 @@
                   <input
                     class="form-control ah-form-control"
                     id="validade"
+                    name="validade"
                     type="date"
                     required
                   />
+                  <div class="invalid-feedback">
+                    Informe até quando o alimento estará disponível.
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label fw-bold" for="retirada"
@@ -132,9 +144,14 @@
                   <input
                     class="form-control ah-form-control"
                     id="retirada"
+                    name="retirada"
                     type="text"
+                    autocomplete="street-address"
                     required
                   />
+                  <div class="invalid-feedback">
+                    Informe o local de retirada.
+                  </div>
                 </div>
                 <div class="col-12">
                   <p class="ah-success d-none p-3 mb-3" data-form-success>
