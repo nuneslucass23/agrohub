@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="col-lg-8">
-                        <form class="ah-panel" id="form-contato" data-ah-form novalidate>
+                        <form class="ah-panel" id="form-contato" data-ah-form data-contact-form novalidate>
                             <span class="ah-eyebrow">Formulário de contato</span>
                             <h2 class="ah-section-title mb-2">Envie sua mensagem</h2>
                             <p class="ah-text-muted mb-4">
@@ -96,14 +96,15 @@
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold" for="nome">Nome completo</label>
                                     <input class="form-control ah-form-control" id="nome" name="nome" type="text"
-                                        minlength="3" autocomplete="name" required>
-                                    <div class="invalid-feedback">Informe seu nome completo.</div>
+                                        autocomplete="name" data-contact-name aria-describedby="nome-ajuda" required>
+                                    <div class="form-text" id="nome-ajuda">Informe nome e sobrenome, com pelo menos duas letras em cada parte.</div>
+                                    <div class="invalid-feedback">Informe nome e sobrenome com pelo menos duas letras cada.</div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label class="form-label fw-bold" for="email">E-mail</label>
                                     <input class="form-control ah-form-control" id="email" name="email" type="email"
-                                        autocomplete="email" required>
+                                        autocomplete="email" data-contact-email required>
                                     <div class="invalid-feedback">Informe um e-mail válido.</div>
                                 </div>
 
@@ -140,9 +141,13 @@
                                 <div class="col-12">
                                     <label class="form-label fw-bold" for="mensagem">Mensagem</label>
                                     <textarea class="form-control ah-form-control" id="mensagem" name="mensagem"
-                                        rows="6" minlength="20" maxlength="1000" data-char-source required></textarea>
-                                    <div class="ah-char-counter" data-char-counter>0 / 1000</div>
-                                    <div class="invalid-feedback">A mensagem deve ter pelo menos 20 caracteres.</div>
+                                        rows="6" maxlength="500" data-char-source data-contact-message
+                                        aria-describedby="mensagem-ajuda" required></textarea>
+                                    <div class="d-flex flex-column flex-sm-row justify-content-between gap-1 mt-1">
+                                        <div class="form-text" id="mensagem-ajuda">Descreva sua solicitação com até 500 caracteres.</div>
+                                        <div class="ah-char-counter" data-char-counter>0 / 500</div>
+                                    </div>
+                                    <div class="invalid-feedback">Descreva sua mensagem em até 500 caracteres.</div>
                                 </div>
 
                                 <div class="col-12">
@@ -156,7 +161,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <p class="ah-success d-none p-3 mb-3" id="form-success" data-form-success>
+                                    <p class="ah-success d-none p-3 mb-3" id="form-success" data-form-success hidden>
                                         Mensagem enviada com sucesso. Em breve nossa equipe entrará em contato.
                                     </p>
                                     <div class="d-flex flex-wrap align-items-center gap-3">

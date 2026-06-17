@@ -151,14 +151,110 @@
                 </div>
             </div>
         </section>
-        <!-- Pitch Vídeo -->
+
+        <!-- Funcionalidade nova da Fase 4: simula o impacto de uma doação. -->
+        <section class="ah-section ah-section-soft" id="simulador">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-5">
+                        <span class="ah-eyebrow">Nova funcionalidade</span>
+                        <h2 class="ah-section-title">Simule o impacto de uma doação.</h2>
+                        <p class="ah-text-muted">
+                            Informe a quantidade aproximada de alimento disponível e veja uma estimativa de refeições
+                            e famílias atendidas. Os valores são ilustrativos para apoiar a decisão de produtores e ONGs.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <form class="ah-panel ah-impact-tool" data-impact-form>
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-5">
+                                    <label class="form-label fw-bold" for="impacto-kg">Quantidade disponível</label>
+                                    <div class="input-group">
+                                        <input class="form-control ah-form-control" id="impacto-kg" type="number"
+                                            min="1" max="5000" value="120" data-impact-kg>
+                                        <span class="input-group-text">kg</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold" for="impacto-categoria">Categoria</label>
+                                    <select class="form-select ah-form-control" id="impacto-categoria" data-impact-category>
+                                        <option value="hortifruti">Hortifruti</option>
+                                        <option value="graos">Grãos</option>
+                                        <option value="laticinios">Laticínios</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <button class="ah-btn w-100" type="submit">Calcular</button>
+                                </div>
+                            </div>
+
+                            <div class="ah-impact-result mt-4" aria-live="polite">
+                                <div>
+                                    <strong data-impact-meals>360</strong>
+                                    <span>refeições estimadas</span>
+                                </div>
+                                <div>
+                                    <strong data-impact-families>90</strong>
+                                    <span>famílias beneficiadas</span>
+                                </div>
+                                <div>
+                                    <strong data-impact-waste>120 kg</strong>
+                                    <span>de alimento reaproveitado</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pitch Vídeo: preserva o vídeo da Fase 3 e reserva espaço para o novo vídeo da Fase 4. -->
         <section class="ah-section ah-section-dark" id="pitch">
-            <div class="container text-center">
-                <span class="ah-eyebrow">Pitch Vídeo</span>
-                <h2 class="ah-section-title mb-4">Assista à apresentação do projeto</h2>
-                <a class="ah-btn" href="https://drive.google.com/file/d/1Q60UvvN7hrO8EKcji6_TGK2RlSb9yrnV/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    ▶ Assistir ao Pitch
-                </a>
+            <div class="container">
+                <div class="row g-4 align-items-stretch">
+                    <div class="col-lg-5">
+                        <span class="ah-eyebrow">Pitch Vídeo</span>
+                        <h2 class="ah-section-title mb-3">Apresentações do projeto</h2>
+                        <p class="ah-lead mb-0">
+                            O vídeo da Fase 3 foi mantido como registro do protótipo anterior. O vídeo da Fase 4 deve
+                            ser inserido depois da gravação, com os testes do Fale Conosco e a nova funcionalidade.
+                        </p>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <article class="ah-pitch-card">
+                                    <span class="ah-badge ah-badge-success">Fase 3</span>
+                                    <h3 class="ah-card-title h5 mt-3">Protótipo inicial</h3>
+                                    <p class="ah-text-muted">
+                                        Pitch já gravado para apresentar a navegabilidade da versão anterior.
+                                    </p>
+                                    <a class="ah-btn" href="https://drive.google.com/file/d/1Q60UvvN7hrO8EKcji6_TGK2RlSb9yrnV/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                                        Assistir Pitch da Fase 3
+                                    </a>
+                                </article>
+                            </div>
+
+                            <div class="col-md-6">
+                                <article class="ah-pitch-card">
+                                    <span class="ah-badge ah-badge-warning">Fase 4</span>
+                                    <h3 class="ah-card-title h5 mt-3">Testes e melhorias</h3>
+                                    <p class="ah-text-muted">
+                                        Cole aqui o link do novo vídeo após gravar a apresentação desta entrega.
+                                    </p>
+                                    <!-- Substituir este placeholder pelo link real quando o Pitch da Fase 4 estiver publicado. -->
+                                    <span class="ah-btn ah-btn-disabled" role="link" aria-disabled="true" data-pitch-placeholder>
+                                        Link da Fase 4 pendente
+                                    </span>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

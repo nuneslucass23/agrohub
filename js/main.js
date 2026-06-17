@@ -86,7 +86,139 @@ function getFormSuccess(form) {
 function hideFormSuccess(form) {
     const success = getFormSuccess(form);
     success?.classList.add("d-none");
+    success?.setAttribute("hidden", "");
     success?.removeAttribute("role");
+}
+
+// Atualiza a mensagem exibida abaixo do campo quando existe uma regra customizada.
+function setFieldError(field, message = "") {
+    if (!field) return;
+
+    field.setCustomValidity(message);
+    field.classList.toggle("is-invalid", Boolean(message));
+    field.setAttribute("aria-invalid", String(Boolean(message)));
+
+    const feedback = field.parentElement?.querySelector(".invalid-feedback")
+        || field.closest(".col-12")?.querySelector(".invalid-feedback");
+
+    if (feedback && message) {
+        feedback.textContent = message;
+    }
+}
+
+// Valida o nome completo exigido no enunciado da Fase 4.
+function validateContactName(field) {
+    if (!field) return true;
+
+    const value = field.value.trim().replace(/\s+/g, " ");
+    const parts = value.split(" ").filter(Boolean);
+    const hasOnlyLetters = parts.every((part) => /^[A-Za-zÀ-ÿ'-]+$/.test(part));
+    const hasValidSizes = parts.length >= 2 && parts[0].length >= 2 && parts[parts.length - 1].length >= 2;
+
+    if (!value) {
+        setFieldError(field, "O nome completo não pode ficar em branco.");
+        return false;
+    }
+
+    if (parts.length < 2) {
+        setFieldError(field, "Informe nome e sobrenome.");
+        return false;
+    }
+
+    if (!hasValidSizes) {
+        setFieldError(field, "Nome e sobrenome precisam ter pelo menos duas letras cada.");
+        return false;
+    }
+
+    if (!hasOnlyLetters) {
+        setFieldError(field, "Use apenas letras, espaços, apóstrofo ou hífen no nome.");
+        return false;
+    }
+
+    setFieldError(field);
+    return true;
+}
+
+// Reforça o formato de e-mail para entregar uma mensagem mais clara ao usuário.
+function validateContactEmail(field) {
+    if (!field) return true;
+
+    const value = field.value.trim();
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+
+    if (!value) {
+        setFieldError(field, "O e-mail não pode ficar em branco.");
+        return false;
+    }
+
+    if (!isEmail) {
+        setFieldError(field, "Digite um e-mail em formato válido, como nome@email.com.");
+        return false;
+    }
+
+    setFieldError(field);
+    return true;
+}
+
+// Confere a mensagem obrigatória com limite máximo de 500 caracteres.
+function validateContactMessage(field) {
+    if (!field) return true;
+
+    const value = field.value.trim();
+
+    if (!value) {
+        setFieldError(field, "A descrição da mensagem não pode ficar em branco.");
+        return false;
+    }
+
+    if (value.length > 500) {
+        setFieldError(field, "A descrição deve ter no máximo 500 caracteres.");
+        return false;
+    }
+
+    setFieldError(field);
+    return true;
+}
+
+// Aplica todas as validações específicas da página Fale Conosco.
+function validateContactForm(form) {
+    if (!form?.matches("[data-contact-form]")) return true;
+
+    const validations = [
+        validateContactName(form.querySelector("[data-contact-name]")),
+        validateContactEmail(form.querySelector("[data-contact-email]")),
+        validateContactMessage(form.querySelector("[data-contact-message]")),
+    ];
+
+    return validations.every(Boolean);
+}
+
+// Remove estados customizados depois que o formulário é enviado com sucesso.
+function clearContactValidation(form) {
+    if (!form?.matches("[data-contact-form]")) return;
+
+    form.querySelectorAll("[data-contact-name], [data-contact-email], [data-contact-message]").forEach((field) => {
+        setFieldError(field);
+        field.removeAttribute("aria-invalid");
+    });
+}
+
+// Revalida campos do Fale Conosco enquanto o usuário digita.
+function initContactValidation() {
+    const form = document.querySelector("[data-contact-form]");
+    if (!form) return;
+
+    form.querySelector("[data-contact-name]")?.addEventListener("input", (event) => {
+        validateContactName(event.currentTarget);
+    });
+
+    form.querySelector("[data-contact-email]")?.addEventListener("input", (event) => {
+        validateContactEmail(event.currentTarget);
+    });
+
+    form.querySelector("[data-contact-message]")?.addEventListener("input", (event) => {
+        validateContactMessage(event.currentTarget);
+    });
 }
 
 // Valida formulários com HTML5 e mostra uma mensagem de confirmação.
@@ -101,18 +233,23 @@ function initForms() {
             event.preventDefault();
             hideFormSuccess(form);
 
-            if (!form.checkValidity()) {
+            const isCustomValid = validateContactForm(form);
+
+            if (!isCustomValid || !form.checkValidity()) {
                 form.classList.add("was-validated");
+                form.querySelector(":invalid")?.focus();
                 return;
             }
 
             const success = getFormSuccess(form);
             success?.classList.remove("d-none");
+            success?.removeAttribute("hidden");
             success?.setAttribute("role", "status");
 
             form.reset();
             form.classList.remove("was-validated");
             resetCharCounters(form);
+            clearContactValidation(form);
         });
     });
 }
@@ -149,6 +286,44 @@ function resetCharCounters(scope = document) {
             counter.classList.remove("warning");
         }
     });
+}
+
+// Calcula uma estimativa simples de impacto para demonstrar a nova funcionalidade.
+function initImpactSimulator() {
+    const form = document.querySelector("[data-impact-form]");
+    if (!form) return;
+
+    const input = form.querySelector("[data-impact-kg]");
+    const category = form.querySelector("[data-impact-category]");
+    const meals = form.querySelector("[data-impact-meals]");
+    const families = form.querySelector("[data-impact-families]");
+    const waste = form.querySelector("[data-impact-waste]");
+
+    const multipliers = {
+        hortifruti: 3,
+        graos: 5,
+        laticinios: 2,
+    };
+
+    const updateImpact = () => {
+        const kg = Math.max(0, Number(input?.value || 0));
+        const multiplier = multipliers[category?.value] || 3;
+        const estimatedMeals = Math.round(kg * multiplier);
+        const estimatedFamilies = estimatedMeals > 0 ? Math.max(1, Math.round(estimatedMeals / 4)) : 0;
+
+        if (meals) meals.textContent = estimatedMeals.toLocaleString("pt-BR");
+        if (families) families.textContent = estimatedFamilies.toLocaleString("pt-BR");
+        if (waste) waste.textContent = `${kg.toLocaleString("pt-BR")} kg`;
+    };
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        updateImpact();
+    });
+
+    input?.addEventListener("input", updateImpact);
+    category?.addEventListener("change", updateImpact);
+    updateImpact();
 }
 
 // Mantém a navegação por âncoras suave dentro da Home.
@@ -242,8 +417,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveNav();
     initMobileMenu();
     initCadastroTabs();
+    initContactValidation();
     initForms();
     initContactCounters();
+    initImpactSimulator();
     initSmoothScroll();
     initOngFilters();
     initScheduleButtons();

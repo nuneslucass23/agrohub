@@ -290,6 +290,13 @@ h3 {
     transform: none;
 }
 
+.ah-btn-disabled,
+.ah-btn-disabled:hover {
+    cursor: not-allowed;
+    opacity: 0.72;
+    transform: none;
+}
+
 /* Indicadores numericos. */
 .ah-stat {
     padding: 1.35rem;
@@ -436,6 +443,49 @@ h3 {
 
 .ah-section-soft {
     background: var(--ah-sand);
+}
+
+/* Simulador de impacto usado como funcionalidade nova da Fase 4. */
+.ah-impact-tool {
+    border-top: 0.25rem solid var(--ah-gold);
+}
+
+.ah-impact-result {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.ah-impact-result div {
+    padding: 1rem;
+    background: var(--ah-cream);
+    border: 1px solid var(--ah-border);
+    border-radius: var(--ah-radius);
+}
+
+.ah-impact-result strong {
+    display: block;
+    color: var(--ah-green-900);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.ah-impact-result span {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--ah-muted);
+    font-weight: 800;
+}
+
+.ah-pitch-card {
+    height: 100%;
+    padding: 1.35rem;
+    color: var(--ah-text);
+    background: var(--ah-white);
+    border: 1px solid rgba(232, 220, 200, 0.35);
+    border-radius: var(--ah-radius);
+    box-shadow: var(--ah-shadow);
 }
 
 .ah-faq .accordion-item {
@@ -636,6 +686,10 @@ h3 {
         grid-column: 2;
         width: fit-content;
     }
+
+    .ah-impact-result {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -658,7 +712,9 @@ h3 {
     }
 
     .ah-section-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        line-height: 1.14;
+        overflow-wrap: anywhere;
     }
 
     .ah-lead {
